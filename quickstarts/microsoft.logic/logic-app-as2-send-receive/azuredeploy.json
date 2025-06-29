@@ -100,7 +100,7 @@
       "tags": {
         "displayName": "Contoso Integration Account"
       },
-      "location": "[parameters('location')]"
+      "location": "francecentral"
     },
     {
       "type": "Microsoft.Logic/integrationAccounts",
@@ -728,7 +728,7 @@
       "type": "Microsoft.Logic/workflows",
       "apiVersion": "2019-05-01",
       "name": "[parameters('contosoAS2ReceiveLogicAppName')]",
-      "location": "[parameters('location')]",
+      "location": "francecentral",
       "tags": {
         "displayName": "Contoso AS2 Receive"
       },
@@ -804,7 +804,7 @@
               "inputs": {
                 "host": {
                   "api": {
-                    "runtimeUrl": "[format('https://logic-apis-{0}.azure-apim.net/apim/as2', parameters('location'))]"
+                    "runtimeUrl": "https://logic-apis-francecentral.azure-apim.net/apim/as2"
                   },
                   "connection": {
                     "name": "@parameters('$connections')['as2']['connectionId']"
@@ -834,7 +834,7 @@
           "$connections": {
             "value": {
               "as2": {
-                "id": "[variables('as2Id')]",
+                "id": "[subscriptionResourceId('Microsoft.Web/locations/managedApis', 'francecentral', 'as2')]",
                 "connectionId": "[format('{0}/providers/Microsoft.Web/connections/{1}', resourceGroup().id, parameters('contoso_AS2_Connection_Name'))]",
                 "connectionName": "[parameters('contoso_AS2_Connection_Name')]"
               }
@@ -1233,10 +1233,10 @@
       "type": "Microsoft.Web/connections",
       "apiVersion": "2018-07-01-preview",
       "name": "[parameters('contoso_AS2_Connection_Name')]",
-      "location": "[parameters('location')]",
+      "location": "francecentral",
       "properties": {
         "api": {
-          "id": "[variables('as2Id')]"
+          "id": "[subscriptionResourceId('Microsoft.Web/locations/managedApis', 'francecentral', 'as2')]"
         },
         "displayName": "Contoso AS2 connection",
         "parameterValues": {
