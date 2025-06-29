@@ -48,7 +48,7 @@ resource contosoIntegrationAccount 'Microsoft.Logic/integrationAccounts@2019-05-
     displayName: 'Contoso Integration Account'
   }
   name: contosoIntegrationAccountName
-  location: location
+  location: 'francecentral'
 }
 
 resource fabrikamIntegrationAccount 'Microsoft.Logic/integrationAccounts@2019-05-01' = {
@@ -647,7 +647,7 @@ resource contosoIntegrationAccountName_Contoso_FabrikamFinance 'Microsoft.Logic/
 
 resource contosoAS2ReceiveLogicApp 'Microsoft.Logic/workflows@2019-05-01' = {
   name: contosoAS2ReceiveLogicAppName
-  location: location
+  location: 'francecentral'
   tags: {
     displayName: 'Contoso AS2 Receive'
   }
@@ -723,7 +723,7 @@ resource contosoAS2ReceiveLogicApp 'Microsoft.Logic/workflows@2019-05-01' = {
           inputs: {
             host: {
               api: {
-                runtimeUrl: 'https://logic-apis-${location}.azure-apim.net/apim/as2'
+                runtimeUrl: 'https://logic-apis-francecentral.azure-apim.net/apim/as2'
               }
               connection: {
                 name: '@parameters(\'$connections\')[\'as2\'][\'connectionId\']'
@@ -1144,7 +1144,7 @@ resource fabrikamIntegrationAccountName_FabrikamFinance_Contoso 'Microsoft.Logic
 
 resource contoso_AS2_Connection 'Microsoft.Web/connections@2018-07-01-preview' = {
   name: contoso_AS2_Connection_Name
-  location: location
+  location: 'francecentral'
   properties: {
     api: {
       id: as2Id
